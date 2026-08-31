@@ -6,3 +6,10 @@ coarse tapering via dipole main circuits, quads and sextupoles with ideal taperi
 Then two scenarios:
 1. orbit correctors for more refined tapering
 2. or trim in first dipole of 3 dipoles in the cell
+
+To do:
+
+- refine customized tapering strategy
+- rematch chroma and tunes
+- scan both scenarios for more refined coarse powering of main dipoles
+- provide mT m values to magnet team for both Z and ttbar
