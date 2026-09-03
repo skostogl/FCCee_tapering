@@ -13,3 +13,17 @@ To do:
 - rematch chroma and tunes
 - scan both scenarios for more refined coarse powering of main dipoles
 - provide mT m values to magnet team for both Z and ttbar
+
+
+### Environment
+
+Python >= 3.11.
+
+```bash
+conda create -n fccee-tapering python=3.13
+conda activate fccee-tapering
+pip install -e ".[notebook]"
+```
+
+
+

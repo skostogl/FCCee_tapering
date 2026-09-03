@@ -1,0 +1,46 @@
+# Lattice files and generated study data.
+# Lattices live outside this repo (see README: ../acc-models-fcc-ee) and
+# generated ones run to 100s of MB. Use `git add -f <file>` for the rare
+# small JSON that genuinely belongs in version control.
+*.json
+*.h5
+*.npz
+*.parquet
+
+# Outputs
+outputs/
+results/
+figures/
+*.png
+*.pdf
+
+# Notebooks
+.ipynb_checkpoints/
+*_old.ipynb
+
+# Python
+__pycache__/
+*.py[cod]
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Test & tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+venv/
+env/
+.conda/
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

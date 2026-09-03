@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fccee-tapering"
+version = "0.1.0"
+description = "FCC-ee tapering granularity studies (LCC_107.0.1)"
+readme = "README.md"
+requires-python = ">=3.11"
+
+# The xsuite stack is pinned exactly: tapering results depend on the
+# radiation/taper internals, so both of us must run identical versions.
+# These are the versions `xsuite==0.59.7` actually resolves to.
+dependencies = [
+    "xsuite==0.59.7",
+    "xtrack==0.111.6",
+    "xpart==0.23.18",
+    "xfields==0.27.2",
+    "xobjects==0.6.10",
+    "xdeps==0.10.20",
+    # General scientific stack: lower bounds only, so neither of us is
+    # forced onto a specific major. See the pandas note in the README.
+    "numpy>=2.0",
+    "scipy>=1.14",
+    "matplotlib>=3.9",
+    "pandas>=2.2",
+    "pyyaml>=6.0",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+notebook = ["ipykernel", "ipympl", "jupyterlab"]
+madx = ["cpymad>=1.17"]          # only if lattices are rebuilt from MAD-X
+dev = ["pytest>=8"]
+
+# No Python package in the repo yet -- the study code currently lives in
+# notebooks. This keeps `pip install -e .` working as an environment
+# installer. When modules are added, replace this with:
+#   [tool.setuptools.packages.find]
+#   where = ["src"]
+[tool.setuptools]
+packages = []
