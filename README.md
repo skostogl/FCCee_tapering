@@ -7,6 +7,9 @@ Then two scenarios:
 1. orbit correctors for more refined tapering
 2. or trim in first dipole of 3 dipoles in the cell
 
+For each scenario, the number of dipoles tapering circuits can be defined to compare different tapering granularity. 
+Change the variable N_DIPOLES_CIRCUIT_PER_SECTOR in the first cell of Circuit Definition part in the notebook.
+
 To do:
 
 - refine customized tapering strategy
