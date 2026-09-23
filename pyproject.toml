@@ -27,6 +27,8 @@ dependencies = [
     "pandas>=2.2",
     "pyyaml>=6.0",
     "tqdm>=4.66",
+    # Checkpoints are stored as parquet; pandas needs an engine for it.
+    "pyarrow>=15",
 ]
 
 [project.optional-dependencies]
@@ -34,10 +36,15 @@ notebook = ["ipykernel", "ipympl", "jupyterlab"]
 madx = ["cpymad>=1.17"]          # only if lattices are rebuilt from MAD-X
 dev = ["pytest>=8"]
 
-# No Python package in the repo yet -- the study code currently lives in
-# notebooks. This keeps `pip install -e .` working as an environment
-# installer. When modules are added, replace this with:
-#   [tool.setuptools.packages.find]
-#   where = ["src"]
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# The tapering/RF solver stays a top-level module, imported as `tapering` by
+# both the package and the notebooks. src/tapering.py is a symlink to it, so
+# there is one copy of the file and it is importable from anywhere.
 [tool.setuptools]
-packages = []
+py-modules = ["tapering"]
+package-dir = {"" = "src"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

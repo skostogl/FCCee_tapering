@@ -44,3 +44,17 @@ env/
 .idea/
 *.swp
 .DS_Store
+
+# Generated checkpoint data. The lattices are .json.gz, so the *.json rule
+# above does not catch them.
+checkpoints/
+
+# Local scratch, deliberately kept out of the shared history.
+notebooks/
+tests/
+trim_position_scan.py
+tapering_granularity_scenario2_trim_position_comparison.ipynb
+
+# Symlink to the tracked top-level tapering.py; committing it would give the
+# repo a second copy of the same module.
+src/tapering.py
