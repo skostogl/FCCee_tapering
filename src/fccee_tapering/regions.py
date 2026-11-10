@@ -275,7 +275,7 @@ def define_circuits(
         for family, prefixes in SEXTUPOLE_FAMILIES.items():
             elements = _select(
                 line,
-                arc_elements,
+                arc_ds_elements,
                 taperable,
                 type_by_name,
                 element_type="Sextupole",
