@@ -26,7 +26,7 @@ DIPOLES_PER_CELL = 3
 
 # Magnet families that get their own circuits, and the element name prefixes
 # that identify them.
-QUADRUPOLE_FAMILIES = {"QF": ("qf2a", "qf3a"), "QD": ("qd1a",)}
+QUADRUPOLE_FAMILIES = {"QF": ("qf2a", "qf3a"), "QD": ("qd1a","qd1am")}
 SEXTUPOLE_FAMILIES = {"SF1": ("sf1a",), "SF2": ("sf2a",), "SD1": ("sd1a",), "SD2": ("sd2a",)}
 
 # Quadrupole circuits per sector, per family.
@@ -138,8 +138,15 @@ def _select(line, element_names, taperable, type_by_name, *, element_type=None, 
             continue
         if element_type is not None and element_type not in type_by_name.get(name, ""):
             continue
-        if prefix is not None and not _family_of(name).startswith(tuple(prefix)):
-            continue
+        if prefix is not None:
+            prefixes = (
+                (prefix,)
+                if isinstance(prefix, str)
+                else tuple(prefix)
+            )
+            
+            if _family_of(name) not in prefixes:
+                continue   
         selected.append(name)
     return np.asarray(selected, dtype=str)
 
